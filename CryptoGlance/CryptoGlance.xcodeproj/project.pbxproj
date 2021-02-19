@@ -12,6 +12,7 @@
 		0168731125D88FE70096DB8D /* MontserratAlternates-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168731025D88FE70096DB8D /* MontserratAlternates-Bold.ttf */; };
 		0168731625D893970096DB8D /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168731525D893970096DB8D /* Poppins-Bold.ttf */; };
 		0168731B25D893A50096DB8D /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168731A25D893A50096DB8D /* Poppins-SemiBold.ttf */; };
+		01850A0F25E07DAC00E5C6CA /* Nomics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01850A0E25E07DAC00E5C6CA /* Nomics.plist */; };
 		01A4A11925D63941004F5BAD /* CryptoGlanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A11825D63941004F5BAD /* CryptoGlanceApp.swift */; };
 		01A4A11B25D63941004F5BAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A11A25D63941004F5BAD /* ContentView.swift */; };
 		01A4A11D25D63942004F5BAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A4A11C25D63942004F5BAD /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		0168731025D88FE70096DB8D /* MontserratAlternates-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.ttf"; sourceTree = "<group>"; };
 		0168731525D893970096DB8D /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		0168731A25D893A50096DB8D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		01850A0E25E07DAC00E5C6CA /* Nomics.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Nomics.plist; sourceTree = "<group>"; };
 		01A4A11525D63941004F5BAD /* CryptoGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A4A11825D63941004F5BAD /* CryptoGlanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoGlanceApp.swift; sourceTree = "<group>"; };
 		01A4A11A25D63941004F5BAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		01850A0D25E07D6B00E5C6CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01A4A10C25D63941004F5BAD = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +132,8 @@
 				01A4A11A25D63941004F5BAD /* ContentView.swift */,
 				01A4A11C25D63942004F5BAD /* Assets.xcassets */,
 				01A4A12125D63942004F5BAD /* Info.plist */,
+				01850A0E25E07DAC00E5C6CA /* Nomics.plist */,
+				01850A0D25E07D6B00E5C6CA /* Extensions */,
 				0168730525D88DC20096DB8D /* Resources */,
 				01A4A11E25D63942004F5BAD /* Preview Content */,
 			);
@@ -271,6 +282,7 @@
 				0168730725D88E150096DB8D /* Comfortaa-Light.ttf in Resources */,
 				01A4A11D25D63942004F5BAD /* Assets.xcassets in Resources */,
 				0168731125D88FE70096DB8D /* MontserratAlternates-Bold.ttf in Resources */,
+				01850A0F25E07DAC00E5C6CA /* Nomics.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

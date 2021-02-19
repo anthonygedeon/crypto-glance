@@ -7,75 +7,147 @@
 
 import SwiftUI
 import SwiftUICharts
-import Foundation
+import Combine
 
-struct CryptoMetaData: Codable {
-    public var title: String
-    //    public var asset_id: String
-//    public var name: String
-//    public var price_usd: Float
-//    public var type_is_crypto: Int
+enum Secrets {
+    
+    public static var apiKey: String {
+        get {
+            
+            guard let filePath = Bundle.main.path(forResource: "Nomics", ofType: "plist") else {
+                fatalError("Plist file not available")
+            }
+            
+            let plist = NSDictionary(contentsOfFile: filePath)
+            guard let value = plist?.object(forKey: "API_KEY") as? String else {
+                fatalError("API_KEY is not available")
+            }
+            
+            return value
+        }
+    }
+    
 }
 
-struct APIData: Codable {
-    public var cryptocurrencies: [CryptoMetaData]
+class RemoteURLImage : ObservableObject {
+    var didChange = PassthroughSubject<Data, Never>()
+    
+    var data = Data() {
+        didSet {
+            didChange.send(data)
+        }
+    }
+    
+    init(imageURL: String) {
+        guard let url = URL(string: imageURL) else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    
+            guard let data = data else { return }
+        
+            DispatchQueue.main.async {
+                self.data = data
+            }
+            
+        }.resume()
+    }
+    
 }
 
-struct APIResponse: Codable {
-    public var data: APIData
+struct ImageView: View {
+    @ObservedObject var imageLoader : RemoteURLImage
+    @State var image : UIImage = UIImage()
+
+    init(withURL url:String) {
+        imageLoader = RemoteURLImage(imageURL: url)
+    }
+
+    var body: some View {
+
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 24, height: 24)
+                .cornerRadius(50)
+                .onReceive(imageLoader.didChange) { data in
+                self.image = UIImage(data: data) ?? UIImage()
+        }
+    }
+}
+
+struct CryptoMetaData: Codable, Identifiable, Hashable {
+    public let symbol : String?
+    public let name : String?
+    public let price : String?
+    public let logo_url : String?
+    
+    var id: String? { symbol }
 }
 
 struct CryptoCardView: View {
     
+    public var symbol : String?
+    public var name : String?
+    public var price : String?
+    public let logo_url : String?
+    
+    private func clean() -> String? {
+        guard let priceUsd = price else { return nil }
+        let priceFloat = Float(priceUsd)!
+        return String(format: "%.2f", priceFloat)
+    }
+    
     var body: some View {
         HStack {
             
-            ZStack {
-                Circle()
-                    .frame(width: 48, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(Color(#colorLiteral(red: 0.0942870006, green: 0.09384272248, blue: 0.1069754437, alpha: 1)))
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.white)
-            }.padding(.trailing, 8)
+            Group {
+                ZStack {
+                    Circle()
+                        .frame(width: 48, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color(#colorLiteral(red: 0.0942870006, green: 0.09384272248, blue: 0.1069754437, alpha: 1)))
+                    ImageView(withURL: logo_url!)
+                    
+                }.padding(.trailing, 8)
 
-            VStack(alignment: .leading) {
-                
-                Text("Ripple")
-                    .font(.custom("Poppins-Bold", size: 18))
-                    .foregroundColor(.white)
-                
-                Text("XRP")
-                    .font(.custom("Poppins-SemiBold", size: 16))
-                    .foregroundColor(.gray)
-            }
-            
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: .zero) {
-                Text("1899.12")
-                    .font(.custom("MontserratAlternates-Bold", size: 18))
-                    .foregroundColor(.white)
-            
-                
-                HStack {
-                    Image(systemName: "arrow.up.right")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 8, height: 8)
-                        .foregroundColor(.green)
-                        
+                VStack(alignment: .leading) {
                     
-                    Text("0.23%")
-                        .foregroundColor(.green)
-                        .padding(.trailing, 24)
-                        .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                    Text("\(name ?? "None")")
+                        .font(.custom("Poppins-Bold", size: 18))
+                        .foregroundColor(.white)
                     
-                    Text("0.563831")
+                    Text("\(symbol ?? "None")")
+                        .font(.custom("Poppins-SemiBold", size: 16))
                         .foregroundColor(.gray)
-                        .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                }
+                
+                Spacer()
+                
+                
+                
+                VStack(alignment: .trailing, spacing: .zero) {
+                    Text("\(clean()!)")
+                        .font(.custom("MontserratAlternates-Bold", size: 18))
+                        .foregroundColor(.white)
+                
+                    
+                    HStack {
+                        Image(systemName: "arrow.up.right")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 8, height: 8)
+                            .foregroundColor(.green)
+                            
+                        
+                        Text("0.23%")
+                            .foregroundColor(.green)
+                            .padding(.trailing, 24)
+                            .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                        
+                        Text("0.456234")
+                            .foregroundColor(.gray)
+                            .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                    }
                 }
             }
-                
         }.padding([.top,.bottom], 6)
         
     }
@@ -84,23 +156,30 @@ struct CryptoCardView: View {
 struct ContentView: View {
     
     @State private var result = ""
+    @State private var metadata: [CryptoMetaData] = []
+    
+    private var rows: [GridItem] = [
+        GridItem(.flexible(minimum: 335, maximum: 335), spacing: 32),
+        GridItem(.flexible(minimum: 335, maximum: 335), spacing: 32),
+        GridItem(.flexible(minimum: 335, maximum: 335), spacing: 32)
+    ]
     
     func loadData() {
         
-        guard let url = URL(string: "https://www.poemist.com/api/v1/randompoems") else {
+        guard let url = URL(string: "https://api.nomics.com/v1/currencies/ticker?key=\(Secrets.apiKey)&per-page=8&page=1") else {
             print("Endpoint is not valid")
             return
         }
         
         let request = URLRequest(url: url)
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let data = data {
                 do {
                     let decoder = JSONDecoder()
-                    let decodedData = try decoder.decode(APIResponse.self, from: data)
-                    print(decodedData)
+                    let decodedData = try decoder.decode([CryptoMetaData].self, from: data)
+                    metadata = decodedData
                 } catch {
                     print ("Error! Something went wrong, yikes")
                 }
@@ -116,19 +195,42 @@ struct ContentView: View {
             Color.black.ignoresSafeArea()
             
             VStack(alignment: .center, content: {
-                Text("bitvavo")
-                    .font(.custom("Comfortaa-Light", fixedSize: 24))
-                    .padding(.bottom, 24)
-                    .foregroundColor(.white)
                 
-                Text("your balance")
-                    .foregroundColor(.gray)
-                    .font(.custom("Poppins-SemiBold", size: 16))
-                
-                Text("3889.34")
-                    .font(.custom("MontserratAlternates-Bold", size: 48))
-                    .foregroundColor(.white)
-                
+                VStack(alignment: .center) {
+                    Text("bitvavo")
+                        .font(.custom("Comfortaa-Light", fixedSize: 24))
+                        .padding([.top, .bottom], 24)
+                        .foregroundColor(.white)
+                    
+                    Text("current price")
+                        .foregroundColor(.gray)
+                        .font(.custom("Poppins-SemiBold", size: 16))
+                    
+                    Text("3889.34")
+                        .font(.custom("MontserratAlternates-Bold", size: 48))
+                        .foregroundColor(.white)
+                        .padding(.bottom, -1)
+                    
+                    ZStack(alignment: .center) {
+                        Capsule()
+                            .frame(width: 92, height: 28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.green)
+                        
+                        HStack {
+                            Image(systemName: "arrow.up.right")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 8, height: 8)
+                                .foregroundColor(.white)
+                                
+                            
+                            Text("0.23%")
+                                .foregroundColor(.white)
+                                .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                        }
+                        
+                    }
+                }
                 
                 LineView(data: [8,23,54,32,12,37,7,23,43],
                          style: ChartStyle(backgroundColor: .black,
@@ -138,8 +240,6 @@ struct ContentView: View {
                                      legendTextColor: .clear,
                                      dropShadowColor: .clear)
                 )
-                
-                
                 
                 HStack(alignment: .center, spacing: .none, content: {
                     Image(systemName: "magnifyingglass")
@@ -166,25 +266,17 @@ struct ContentView: View {
                 .padding(.bottom, 12)
                 
                 ScrollView(.horizontal) {
-                    HStack(spacing: 48) {
-                        ForEach(0..<10) { _ in
-                            VStack {
-                                CryptoCardView()
-                                CryptoCardView()
-                                CryptoCardView()
-                            }.frame(width: 335)
+                    LazyVGrid(columns: rows, alignment: .center) {
+                        ForEach(metadata, id: \.self) { cryptoData in
+                            CryptoCardView(symbol: cryptoData.symbol,
+                                           name: cryptoData.name,
+                                           price: cryptoData.price,
+                                           logo_url: cryptoData.logo_url)
                         }
-                        
                     }.padding(.horizontal, 24)
-                                        
                 }
-
-                
             })
-            
-            
         }.onAppear(perform: loadData)
-        
     }
 }
 
