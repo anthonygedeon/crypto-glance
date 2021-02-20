@@ -103,7 +103,7 @@ struct CryptoCardView: View {
                 ZStack {
                     Circle()
                         .frame(width: 48, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(Color(#colorLiteral(red: 0.0942870006, green: 0.09384272248, blue: 0.1069754437, alpha: 1)))
+                        .foregroundColor(Color.gray100)
                     ImageView(withURL: logo_url!)
                     
                 }.padding(.trailing, 8)
@@ -112,7 +112,7 @@ struct CryptoCardView: View {
                     
                     Text("\(name ?? "None")")
                         .font(.custom("Poppins-Bold", size: 18))
-                        .foregroundColor(.white)
+                        .foregroundColor(.white200)
                     
                     Text("\(symbol ?? "None")")
                         .font(.custom("Poppins-SemiBold", size: 16))
@@ -126,7 +126,7 @@ struct CryptoCardView: View {
                 VStack(alignment: .trailing, spacing: .zero) {
                     Text("\(clean()!)")
                         .font(.custom("MontserratAlternates-Bold", size: 18))
-                        .foregroundColor(.white)
+                        .foregroundColor(.white200)
                 
                     
                     HStack {
@@ -134,7 +134,7 @@ struct CryptoCardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 8, height: 8)
-                            .foregroundColor(.green)
+                            .foregroundColor(.green400)
                             
                         
                         Text("0.23%")
@@ -192,7 +192,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack(alignment: .topLeading) {
-            Color.black.ignoresSafeArea()
+            Color.black200.ignoresSafeArea()
             
             VStack(alignment: .center, content: {
                 
@@ -200,7 +200,7 @@ struct ContentView: View {
                     Text("bitvavo")
                         .font(.custom("Comfortaa-Light", fixedSize: 24))
                         .padding([.top, .bottom], 24)
-                        .foregroundColor(.white)
+                        .foregroundColor(.white200)
                     
                     Text("current price")
                         .foregroundColor(.gray)
@@ -208,24 +208,24 @@ struct ContentView: View {
                     
                     Text("3889.34")
                         .font(.custom("MontserratAlternates-Bold", size: 48))
-                        .foregroundColor(.white)
+                        .foregroundColor(.white200)
                         .padding(.bottom, -1)
                     
                     ZStack(alignment: .center) {
                         Capsule()
                             .frame(width: 92, height: 28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(.green)
+                            .foregroundColor(.green400)
                         
                         HStack {
                             Image(systemName: "arrow.up.right")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 8, height: 8)
-                                .foregroundColor(.white)
+                                .foregroundColor(.white200)
                                 
                             
                             Text("0.23%")
-                                .foregroundColor(.white)
+                                .foregroundColor(.white200)
                                 .font(.custom("MontserratAlternates-SemiBold", size: 16))
                         }
                         
@@ -234,8 +234,8 @@ struct ContentView: View {
                 
                 LineView(data: [8,23,54,32,12,37,7,23,43],
                          style: ChartStyle(backgroundColor: .black,
-                                    accentColor: .white,
-                                     gradientColor: GradientColor(start: .green, end: .green),
+                                    accentColor: .white200,
+                                     gradientColor: GradientColor(start: .green300, end: .green300),
                                      textColor: .black,
                                      legendTextColor: .clear,
                                      dropShadowColor: .clear)
@@ -243,15 +243,15 @@ struct ContentView: View {
                 
                 HStack(alignment: .center, spacing: .none, content: {
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(Color(#colorLiteral(red: 0.1536664665, green: 0.1726024449, blue: 0.1984877288, alpha: 1)))
+                        .foregroundColor(.gray600)
                     ZStack(alignment: .leading) {
                         if result.isEmpty {
                             Text("Search")
-                                .foregroundColor(Color(#colorLiteral(red: 0.2018727362, green: 0.2356998324, blue: 0.2657114863, alpha: 1)))
+                                .foregroundColor(.gray600)
                                 .bold()
                         }
                         TextField("", text: $result)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white200)
                             .font(Font.custom("", size: 18))
                     }
                     
@@ -261,7 +261,7 @@ struct ContentView: View {
                     RoundedRectangle(cornerRadius: 4)
                         .stroke(lineWidth: 2)
                 )
-                .background(Color(#colorLiteral(red: 0.0942870006, green: 0.09384272248, blue: 0.1069754437, alpha: 1)), alignment: .center)
+                .background(Color.gray100, alignment: .center)
                 .padding(.horizontal, 24)
                 .padding(.bottom, 12)
                 
