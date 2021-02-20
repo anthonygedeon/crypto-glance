@@ -89,13 +89,7 @@ struct CryptoCardView: View {
     public var name : String?
     public var price : String?
     public let logo_url : String?
-    
-    private func clean() -> String? {
-        guard let priceUsd = price else { return nil }
-        let priceFloat = Float(priceUsd)!
-        return String(format: "%.2f", priceFloat)
-    }
-    
+        
     var body: some View {
         HStack {
             
@@ -121,10 +115,8 @@ struct CryptoCardView: View {
                 
                 Spacer()
                 
-                
-                
                 VStack(alignment: .trailing, spacing: .zero) {
-                    Text("\(clean()!)")
+                    Text(Double(price!)?.truncate() ?? " ")
                         .font(.custom("MontserratAlternates-Bold", size: 18))
                         .foregroundColor(.white200)
                 
@@ -139,12 +131,12 @@ struct CryptoCardView: View {
                         
                         Text("0.23%")
                             .foregroundColor(.green)
-                            .padding(.trailing, 24)
-                            .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                            .padding(.trailing, 2)
+                            .font(.custom("MontserratAlternates-SemiBold", size: 14))
                         
-                        Text("0.456234")
+                        Text(Double("0.456234")?.truncate(to: "%.4f") ?? " ")
                             .foregroundColor(.gray)
-                            .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                            .font(.custom("MontserratAlternates-SemiBold", size: 14))
                     }
                 }
             }

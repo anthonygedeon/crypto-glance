@@ -14,6 +14,7 @@
 		0168731B25D893A50096DB8D /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168731A25D893A50096DB8D /* Poppins-SemiBold.ttf */; };
 		01850A0F25E07DAC00E5C6CA /* Nomics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01850A0E25E07DAC00E5C6CA /* Nomics.plist */; };
 		01850A1725E082B100E5C6CA /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01850A1625E082B100E5C6CA /* Colors+Extension.swift */; };
+		01850A1C25E08BFA00E5C6CA /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01850A1B25E08BFA00E5C6CA /* Double+Extension.swift */; };
 		01A4A11925D63941004F5BAD /* CryptoGlanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A11825D63941004F5BAD /* CryptoGlanceApp.swift */; };
 		01A4A11B25D63941004F5BAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A11A25D63941004F5BAD /* ContentView.swift */; };
 		01A4A11D25D63942004F5BAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A4A11C25D63942004F5BAD /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		0168731A25D893A50096DB8D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		01850A0E25E07DAC00E5C6CA /* Nomics.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Nomics.plist; sourceTree = "<group>"; };
 		01850A1625E082B100E5C6CA /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
+		01850A1B25E08BFA00E5C6CA /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		01A4A11525D63941004F5BAD /* CryptoGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A4A11825D63941004F5BAD /* CryptoGlanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoGlanceApp.swift; sourceTree = "<group>"; };
 		01A4A11A25D63941004F5BAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				01850A1625E082B100E5C6CA /* Colors+Extension.swift */,
+				01850A1B25E08BFA00E5C6CA /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			files = (
 				01850A1725E082B100E5C6CA /* Colors+Extension.swift in Sources */,
 				01A4A11B25D63941004F5BAD /* ContentView.swift in Sources */,
+				01850A1C25E08BFA00E5C6CA /* Double+Extension.swift in Sources */,
 				01A4A11925D63941004F5BAD /* CryptoGlanceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

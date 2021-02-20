@@ -9,25 +9,31 @@ import XCTest
 @testable import CryptoGlance
 
 class CryptoGlanceTests: XCTestCase {
+    
+    let bigNumber = 1.2345678
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testTruncation() {
+        let shortenFloat = bigNumber.truncate()
+        let expected = String(1.23)
+        XCTAssertEqual(shortenFloat, expected)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testTruncationBy3() {
+        let shortenFloat = bigNumber.truncate(to: "%.3f")
+        let expected = String(1.234)
+        XCTAssertEqual(shortenFloat, expected)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testTruncationBy4() {
+        let shortenFloat = bigNumber.truncate(to: "%.3f")
+        let expected = String(1.2345)
+        XCTAssertEqual(shortenFloat, expected)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testTruncationBy5() {
+        let shortenFloat = bigNumber.truncate(to: "%.4f")
+        let expected = String(1.2345)
+        XCTAssertEqual(shortenFloat, expected)
     }
 
 }
