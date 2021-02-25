@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0157AE5F25E764950079E5B5 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0157AE5E25E764950079E5B5 /* LineGraphView.swift */; };
 		0168730725D88E150096DB8D /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168730625D88E150096DB8D /* Comfortaa-Light.ttf */; };
 		0168730C25D88FC80096DB8D /* MontserratAlternates-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168730B25D88FC80096DB8D /* MontserratAlternates-SemiBold.ttf */; };
 		0168731125D88FE70096DB8D /* MontserratAlternates-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0168731025D88FE70096DB8D /* MontserratAlternates-Bold.ttf */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0157AE5E25E764950079E5B5 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
 		0168730625D88E150096DB8D /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		0168730B25D88FC80096DB8D /* MontserratAlternates-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.ttf"; sourceTree = "<group>"; };
 		0168731025D88FE70096DB8D /* MontserratAlternates-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.ttf"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		0157AE5D25E764460079E5B5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0157AE5E25E764950079E5B5 /* LineGraphView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01850A1725E082B100E5C6CA /* Colors+Extension.swift in Sources */,
+				0157AE5F25E764950079E5B5 /* LineGraphView.swift in Sources */,
 				01A4A11B25D63941004F5BAD /* ContentView.swift in Sources */,
 				01850A1C25E08BFA00E5C6CA /* Double+Extension.swift in Sources */,
 				01A4A11925D63941004F5BAD /* CryptoGlanceApp.swift in Sources */,
