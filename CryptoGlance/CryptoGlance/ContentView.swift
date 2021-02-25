@@ -224,14 +224,7 @@ struct ContentView: View {
                     }
                 }
                 
-                LineView(data: [8,23,54,32,12,37,7,23,43],
-                         style: ChartStyle(backgroundColor: .black,
-                                    accentColor: .white200,
-                                     gradientColor: GradientColor(start: .green300, end: .green300),
-                                     textColor: .black,
-                                     legendTextColor: .clear,
-                                     dropShadowColor: .clear)
-                )
+                
                 
                 HStack(alignment: .center, spacing: .none, content: {
                     Image(systemName: "magnifyingglass")

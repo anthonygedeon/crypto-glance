@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		01A4A12025D63942004F5BAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A4A11F25D63942004F5BAD /* Preview Assets.xcassets */; };
 		01A4A12B25D63942004F5BAD /* CryptoGlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A12A25D63942004F5BAD /* CryptoGlanceTests.swift */; };
 		01A4A13625D63942004F5BAD /* CryptoGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4A13525D63942004F5BAD /* CryptoGlanceUITests.swift */; };
-		01A4A14B25D642C9004F5BAD /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 01A4A14A25D642C9004F5BAD /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A4A14B25D642C9004F5BAD /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +88,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0157AE5D25E764460079E5B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0168730525D88DC20096DB8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +139,7 @@
 		01A4A11725D63941004F5BAD /* CryptoGlance */ = {
 			isa = PBXGroup;
 			children = (
+				0157AE5D25E764460079E5B5 /* Views */,
 				01A4A11825D63941004F5BAD /* CryptoGlanceApp.swift */,
 				01A4A11A25D63941004F5BAD /* ContentView.swift */,
 				01A4A11C25D63942004F5BAD /* Assets.xcassets */,
@@ -189,7 +195,6 @@
 			);
 			name = CryptoGlance;
 			packageProductDependencies = (
-				01A4A14A25D642C9004F5BAD /* SwiftUICharts */,
 			);
 			productName = CryptoGlance;
 			productReference = 01A4A11525D63941004F5BAD /* CryptoGlance.app */;
@@ -263,7 +268,6 @@
 			);
 			mainGroup = 01A4A10C25D63941004F5BAD;
 			packageReferences = (
-				01A4A14925D642C9004F5BAD /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 01A4A11625D63941004F5BAD /* Products */;
 			projectDirPath = "";
@@ -636,25 +640,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		01A4A14925D642C9004F5BAD /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		01A4A14A25D642C9004F5BAD /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01A4A14925D642C9004F5BAD /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01A4A10D25D63941004F5BAD /* Project object */;
 }
