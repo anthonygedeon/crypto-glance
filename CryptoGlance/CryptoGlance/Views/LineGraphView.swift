@@ -7,17 +7,37 @@
 
 import SwiftUI
 
+struct Line: Shape {
+
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            path.move(to: CGPoint(x: rect.minX / 2, y: rect.maxY / 2))
+
+            path.addLine(to: CGPoint(x: 0, y: rect.maxY / 2))
+
+            path.addQuadCurve(to: CGPoint(x: rect.maxX / 2 , y: rect.maxY),
+                        control: CGPoint(x: rect.midX / 2, y: rect.midY / 2))
+
+            path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY / 2))
+
+            path.addQuadCurve(to: CGPoint(x: rect.maxX / 2 , y: rect.maxY),
+                        control: CGPoint(x: rect.maxX, y: rect.midY))
+        }
+    }
+
+}
+
 struct LineGraphView: View {
     var body: some View {
-        Path { path in
-            path.move(to: CGPoint(x: 200, y: 300))
-            path.addLine(to: CGPoint(x: 300, y: 300))
-        }.fill(Color.green)
+        Line()
+            .stroke(style: .init(lineWidth: 4, lineCap: .round))
     }
 }
 
 struct LineGraphView_Previews: PreviewProvider {
     static var previews: some View {
         LineGraphView()
+            .frame(width: 390, height: 200)
+
     }
 }
