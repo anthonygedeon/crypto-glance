@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct Line: Shape {
+    
+    var cryptoPrices: [CGPoint]
 
     func path(in rect: CGRect) -> Path {
         Path { path in
-            path.move(to: CGPoint(x: rect.minX / 2, y: rect.maxY / 2))
+            
+            path.move(to: CGPoint(x: 0, y: rect.height))
 
-            path.addLine(to: CGPoint(x: 0, y: rect.maxY / 2))
-
-
-            path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY / 2))
-
+            path.addLine(to: CGPoint(x: 0, y: rect.height))
+            
+            for index in cryptoPrices {
+                path.addLine(to: CGPoint(x: index.x * 100,
+                                         y: rect.size.height / index.y))
+            }
+            
         }
     }
 
@@ -25,8 +30,18 @@ struct Line: Shape {
 
 struct LineGraphView: View {
     var body: some View {
-        Line()
-            .stroke(style: .init(lineWidth: 4, lineCap: .round))
+        Line(cryptoPrices: [
+            .init(x: 1, y: 5),
+            .init(x: 2, y: 4),
+            .init(x: 3, y: 15),
+            .init(x: 4, y: 6),
+            .init(x: 5, y: 9),
+            .init(x: 6, y: 12),
+            .init(x: 7, y: 14),
+            .init(x: 8, y: 11)
+        ])
+        .stroke(style: .init(lineWidth: 3))
+        .fill(Color.green)
     }
 }
 
@@ -34,7 +49,7 @@ struct LineGraphView: View {
 struct LineGraphView_Previews: PreviewProvider {
     static var previews: some View {
         LineGraphView()
-            .frame(width: 390, height: 200)
+            .frame(maxWidth: .infinity, maxHeight: 200)
 
     }
 }
