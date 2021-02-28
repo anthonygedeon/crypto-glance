@@ -15,13 +15,9 @@ struct Line: Shape {
 
             path.addLine(to: CGPoint(x: 0, y: rect.maxY / 2))
 
-            path.addQuadCurve(to: CGPoint(x: rect.maxX / 2 , y: rect.maxY),
-                        control: CGPoint(x: rect.midX / 2, y: rect.midY / 2))
 
             path.addLine(to: CGPoint(x: rect.maxX / 2, y: rect.maxY / 2))
 
-            path.addQuadCurve(to: CGPoint(x: rect.maxX / 2 , y: rect.maxY),
-                        control: CGPoint(x: rect.maxX, y: rect.midY))
         }
     }
 
