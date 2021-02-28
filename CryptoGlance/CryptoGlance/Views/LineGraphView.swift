@@ -80,7 +80,7 @@ struct LineGraphView: View {
             .init(x: 45, y: 1),
             .init(x: 46, y: 7),
             .init(x: 47, y: 9),
-            .init(x: 48, y: 0)
+            .init(x: 48, y: 1)
         ])
         .stroke(style: .init(lineWidth: 4))
         .fill(Color.green)
