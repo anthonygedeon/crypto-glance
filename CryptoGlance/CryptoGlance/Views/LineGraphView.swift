@@ -30,6 +30,7 @@ struct LineGraphView: View {
     }
 }
 
+
 struct LineGraphView_Previews: PreviewProvider {
     static var previews: some View {
         LineGraphView()
