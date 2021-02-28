@@ -204,7 +204,7 @@ struct ContentView: View {
                     
                     ZStack(alignment: .center) {
                         Capsule()
-                            .frame(width: 92, height: 28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 92, height: 28, alignment: .center)
                             .foregroundColor(.green400)
                         
                         HStack {
@@ -213,7 +213,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 8, height: 8)
                                 .foregroundColor(.white200)
-                                
+                            
                             
                             Text("0.23%")
                                 .foregroundColor(.white200)
@@ -223,6 +223,28 @@ struct ContentView: View {
                     }
                 }
                 
+                Group {
+                    Line(cryptoPrices: [
+                        .init(x: 1, y: 3),
+                        .init(x: 2, y: 4),
+                        .init(x: 3, y: 12),
+                        .init(x: 4, y: 6),
+                        .init(x: 5, y: 9),
+                        .init(x: 6, y: 12),
+                        .init(x: 7, y: 14),
+                        .init(x: 8, y: 11),
+                        .init(x: 9, y: 3),
+                        .init(x: 10, y: 13),
+                        .init(x: 11, y: 15),
+                        .init(x: 12, y: 12),
+                        .init(x: 13, y: 13),
+                        .init(x: 14, y: 3),
+                        .init(x: 15, y: 2),
+                        .init(x: 16, y: 0)
+                    ])
+                    .stroke(style: .init(lineWidth: 3))
+                    .fill(Color.green300)
+                }
                 
                 
                 HStack(alignment: .center, spacing: .none, content: {
